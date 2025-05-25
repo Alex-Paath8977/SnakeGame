@@ -21,9 +21,9 @@ public class GameModel {
             "/resources/com/example/snakegame/image/ic_coconut.png",
             "/resources/com/example/snakegame/image/ic_orange.png",
             "/resources/com/example/snakegame/image/ic_peach.png",
-            "/resources/com/example/snakegame/image/ic_pomegranate.ru",
-            "/resources/com/example/snakegame/image/ic_tomato",
-            "/resources/com/example/snakegame/image/ic_watermelon"};
+            "/resources/com/example/snakegame/image/ic_pomegranate.png",
+            "/resources/com/example/snakegame/image/ic_tomato.png",
+            "/resources/com/example/snakegame/image/ic_watermelon.png"};
 
 
     private List<Point> snakeBody = new ArrayList<>();
@@ -34,11 +34,17 @@ public class GameModel {
     private int foodY;
 
     private boolean gameOver;
-
     public int currentDirection;
-
     private int score = 0;
 
+
+    public void initGame() {
+        for (int i = 0; i < 3; i++) {
+            snakeBody.add(new Point(5, ROWS / 2));
+        }
+        snakeHead = snakeBody.get(0);
+        generateFood();
+    }
 
     private void generateFood() {
         start:

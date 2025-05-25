@@ -22,14 +22,26 @@ public class GameController {
 
     @FXML
     private Canvas gameCanvas;
-
     private GraphicsContext gc;
+    private GameModel gameModel;
+
+    public void setGameModel(GameModel gameModel) {
+        this.gameModel = gameModel;
+    }
+
+    public GameController(GameModel gameModel) {
+        this.gameModel = gameModel;
+    }
 
     //Графический контекст для рисования
     @FXML
     public void initialize() {
         gc = gameCanvas.getGraphicsContext2D();
         drawBackground();
+    }
+
+    public void startGame() {
+        gameModel.initGame();
     }
 
     //Отрисовка шахмантного фона

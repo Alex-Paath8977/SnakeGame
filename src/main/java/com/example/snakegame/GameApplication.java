@@ -2,6 +2,7 @@ package com.example.snakegame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -16,9 +17,13 @@ public class GameApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
+        // Сначала загружаем FXML, чтобы создать контроллер
+        Parent root = fxmlLoader.load();
+        GameController controller = fxmlLoader.getController();
 
-     //   GameController gameController = new GameController();
-     //   gameController.setupKeyControls(scene);
+        // Затем передаём модель в контроллер
+        controller.setGameModel(new GameModel());
+        controller.startGame();
     }
 
 
